@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PostController;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,65 +30,6 @@ Route::get('/about', function () {
     ]);
 });
 
+Route::get('/posts', [PostController::class, 'index']);
 
-Route::get('/blog', function () {
-
-    $blog_posts = [
-        [
-            'title' => 'Kemajuan Negeri',
-            'slug' => 'kemajuan-negeri',
-            'author' => 'Yudha Bustara',
-            'body' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus praesentium vitae mollitia dolorem, maxime expedita incidunt ratione voluptate accusantium eum quibusdam suscipit earum, totam odio, voluptatum voluptates necessitatibus quidem tempore.',
-        ],
-        [
-            'title' => 'Mencapai Manfaat',
-            'slug' => 'mencapai-manfaat',
-            'author' => 'Devina',
-            'body' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus praesentium vitae mollitia dolorem, maxime expedita incidunt ratione voluptate accusantium eum quibusdam suscipit earum, totam odio, voluptatum voluptates necessitatibus quidem tempore.',
-        ],
-        [
-            'title' => 'Karang Besuki',
-            'slug' => 'karang-besuki',
-            'author' => 'Danila',
-            'body' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus praesentium vitae mollitia dolorem, maxime expedita incidunt ratione voluptate accusantium eum quibusdam suscipit earum, totam odio, voluptatum voluptates necessitatibus quidem tempore.',
-        ]
-    ];
-
-    return view('posts', [
-        'title' => 'Blog',
-        'posts' => $blog_posts,
-    ]);
-});
-
-Route::get('/posts/{slug}', function ($slug) {
-    $blog_posts = [
-        [
-            'title' => 'Kemajuan Negeri',
-            'slug' => 'kemajuan-negeri',
-            'author' => 'Yudha Bustara',
-            'body' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus praesentium vitae mollitia dolorem, maxime expedita incidunt ratione voluptate accusantium eum quibusdam suscipit earum, totam odio, voluptatum voluptates necessitatibus quidem tempore.',
-        ],
-        [
-            'title' => 'Mencapai Manfaat',
-            'slug' => 'mencapai-manfaat',
-            'author' => 'Devina',
-            'body' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus praesentium vitae mollitia dolorem, maxime expedita incidunt ratione voluptate accusantium eum quibusdam suscipit earum, totam odio, voluptatum voluptates necessitatibus quidem tempore.',
-        ],
-        [
-            'title' => 'Karang Besuki',
-            'slug' => 'karang-besuki',
-            'author' => 'Danila',
-            'body' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus praesentium vitae mollitia dolorem, maxime expedita incidunt ratione voluptate accusantium eum quibusdam suscipit earum, totam odio, voluptatum voluptates necessitatibus quidem tempore.',
-        ]
-    ];
-    $new_post = [];
-    foreach ($blog_posts as $post) {
-        if ($post['slug'] == $slug) {
-            $new_post = $post;
-        }
-    }
-    return view('post', [
-        'title' => 'Single Post',
-        'post' => $new_post,
-    ]);
-});
+Route::get('/posts/{slug}', [PostController::class, 'show']);
