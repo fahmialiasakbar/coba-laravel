@@ -16,9 +16,9 @@ class PostController extends Controller
         ]);
     }
 
-    public function show($slug)
+    public function show($id)
     {
-        $new_post = Post::find($slug);
+        $new_post = Post::find($id);
         return view('post', [
             'title' => 'Single Post',
             'post' => $new_post,
