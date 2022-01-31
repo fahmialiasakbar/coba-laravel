@@ -2,14 +2,28 @@
 @section('container')
     {{-- <h1>Halaman Posts</h1> --}}
     @foreach ($posts as $post)
-    <article class="mb-5">
+    <article class="mb-5 border-bottom pb-4">
         <h2>
-            <a href="/posts/{{ $post->id }}">
+            <a href="/posts/{{ $post->id }}" class="text-decoration-none">
                 {{ $post->title }}
             </a>
         </h2>
-        <h5>By: {{ $post->author }}</h5>
+        
+        <h5>By: 
+            <a href="/posts/{{ $post->id }}" class="text-decoration-none">
+                {{ $post->user->name }}
+            </a>
+            in 
+            <a href="/categories/{{ $post->category->slug }}" class="text-decoration-none">
+                {{ $post->category->name }}
+            </a>
+        </h5>
+        
         <p class="text-truncate text-truncate-2">{{ $post->excerpt }}</p>
+        
+        <a href="/posts/{{ $post->id }}" class="text-decoration-none">
+            Read More..
+        </a>
     </article>
     @endforeach
 @endsection
