@@ -1,0 +1,15 @@
+// To run seeder
+php artisan db:seed
+
+// To migrate 
+php artisan migrate
+
+// To migrate up only
+php artisan migrate:up
+
+// To migrate from 0
+php artisan migrate:fresh
+
+
+// To migrate from 0 with seed
+php artisan migrate:fresh --seed

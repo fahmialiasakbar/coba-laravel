@@ -3,8 +3,8 @@
 <article>
     <h2 class="mb-5">{{ $post->title }}</h2>
     <h5>By:
-        <a href="/posts/{{ $post->id }}" class="text-decoration-none">
-            {{ $post->user->name }}
+        <a href="/authors/{{ $post->author->username }}" class="text-decoration-none">
+            {{ $post->author->name }}
         </a>
         in 
         <a href="/categories/{{ $post->category->slug }}">

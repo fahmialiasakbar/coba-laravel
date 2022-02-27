@@ -9,7 +9,7 @@
             {{ $post->title }}
         </a>
     </h2>
-    <h5>By: {{ $post->author }}</h5>
+    <h5>By: {{ $post->author->name }}</h5>
     <p class="text-truncate text-truncate-2">{{ $post->excerpt }}</p>
 </article>
 @endforeach
