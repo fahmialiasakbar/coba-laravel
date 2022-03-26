@@ -1,17 +1,25 @@
 @extends('layouts.main')
 @section('container')
-<article>
-    <h2 class="mb-5">{{ $post->title }}</h2>
-    <h5>By:
-        <a href="/authors/{{ $post->author->username }}" class="text-decoration-none">
-            {{ $post->author->name }}
-        </a>
-        in 
-        <a href="/categories/{{ $post->category->slug }}">
-            {{ $post->category->name }}
-        </a>
-    </h5>
-    {!! $post->body !!}
-</article>
-<a href="/posts" class="d-block mt-3">Back</a>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h1 class="mb-3">{{ $post->title }}</h1>
+            <p>By:
+                <a href="/authors/{{ $post->author->username }}" class="text-decoration-none">
+                    {{ $post->author->name }}
+                </a>
+                in 
+                <a href="/categories/{{ $post->category->slug }}" class="text-decoration-none ">
+                    {{ $post->category->name }}
+                </a>
+            </p>
+            <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}" class="card-img-top img-fluid" alt="...">
+            <article class="my-3 fs-5">
+                {!! $post->body !!}
+            </article>
+            <a href="/posts" class="d-block mt-3">Back</a>
+        </div>
+    </div>
+</div>
+
 @endsection

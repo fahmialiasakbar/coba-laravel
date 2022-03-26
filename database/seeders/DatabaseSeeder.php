@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        
+
         // User::create([
         //     'name' => 'Fahmi Akbar',
         //     'email' => 'fahmialiasakbar@gmail.com',
@@ -31,14 +31,14 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(3)->create();
 
         Category::create([
-            'name' => 'Web Programming',
-            'slug' => 'web-programming'
+            'name' => 'Art',
+            'slug' => 'art'
         ]);
 
-        
+
         Category::create([
-            'name' => 'Personal',
-            'slug' => 'personal'
+            'name' => 'Design',
+            'slug' => 'design'
         ]);
 
         \App\Models\Post::factory(20)->create();
